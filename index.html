@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 
   <style>
+    /*Pallete */
     :root {
       --cream: #f7f5f2;
       --charcoal: #1c1c1c;
@@ -32,7 +33,7 @@
       line-height: 1.7;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -66,48 +67,6 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 8rem 2.5rem 5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-inner {
-      max-width: 760px;
-    }
-
-    .hero-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 300;
-      line-height: 1.08;
-      color: var(--charcoal);
-      margin-bottom: 1.8rem;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-desc {
-      font-size: 1.05rem;
-      color: var(--mid);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-    }
-
     .btn-outline-dark-custom {
       display: inline-block;
       padding: 0.75rem 2rem;
@@ -124,22 +83,7 @@
       color: var(--cream);
     }
 
-    .hero-line {
-      position: absolute;
-      right: 10vw;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--border);
-      writing-mode: vertical-rl;
-      display: none;
-    }
-    @media (min-width: 900px) { .hero-line { display: block; } .hero { position: relative; } }
-
-    /* ── SECTION WRAPPER ── */
+    /* SECTION WRAPPER */
     section {
       padding: 6rem 2.5rem;
       border-bottom: 1px solid var(--border);
@@ -174,7 +118,7 @@
     }
     .prose a { color: var(--accent); }
 
-    /* ── ABOUT ── */
+    /* ABOUT */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -201,23 +145,6 @@
       color: var(--mid);
       margin-bottom: 1.2rem;
       font-size: 0.97rem;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.85rem;
-      border: 1px solid var(--border);
-      color: var(--mid);
-      background: white;
     }
 
     /* ── HOW I WORK ── */
@@ -267,7 +194,7 @@
     .work-note p { font-size: 0.88rem; color: var(--mid); }
     .work-note a { color: var(--accent); }
 
-    /* ── CASE STUDIES ── */
+    /* CASE STUDIES */
     .case-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -351,7 +278,7 @@
     .case-card:nth-child(3) .case-bg { background: #e8dfd6; }
     .case-card:nth-child(4) .case-bg { background: #dde8e3; }
 
-    /* ── FOOTER ── */
+    /* Footer */
     footer {
       padding: 3rem 2.5rem;
       display: flex;
@@ -367,7 +294,7 @@
       letter-spacing: 0.06em;
     }
 
-    /* ── FADE IN ── */
+    /* FADE IN */
     .fade-up {
       opacity: 0;
       transform: translateY(24px);
@@ -390,20 +317,32 @@
     </div>
   </nav>
 
+
+  
+
   <!-- ABOUT & PROCESS -->
   <section id="about">
     <div class="max-w">
       <p class="section-label fade-up">01 — About &amp; Process</p>
-      <h2 class="section-title fade-up">Who I am &amp; how I work.</h2>
+      <h2 class="section-title fade-up">Mark Morley.</h2>
       <div class="prose fade-up">
+
         <p>
-          I'm a student at the University of Ottawa studying computer science. 
+          I'm a Computer Science student at the University of Ottawa. 
+          I am passionate about technology, programming, 
+          and I enjoy learning new technologies, building personal projects, 
+          and expanding my knowledge of software development.
         </p>
         <p>
           Before starting this course, I worked at <strong>Nokia</strong> for an intership
           building internal applications using <strong>C# and Blazor</strong> applications — which gave me a
-          solid foundation in component-based thinking, collaborating with designers and stakeholders,
-          and shipping real software to real users.
+          solid foundation in component-based thinking, collaborating with other team members to ship product to users.
+        </p>
+
+        <p>
+           When working on a project, I like to start by understanding the goal and planning the structure before writing any code.
+           I research ideas, look at examples for inspiration, organize the content, and work with clients and team members 
+           to ensure a clear structure before devlopement. 
         </p>
       </div>
     </div>
