@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UX Portfolio</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --cream: #f7f5f2;
+      --charcoal: #1c1c1c;
+      --mid: #6b6b6b;
+      --accent: #2d5a4b;
+      --accent-light: #e8f0ed;
+      --border: #e0ddd9;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(247,245,242,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: 760px;
+    }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      color: var(--charcoal);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-outline-dark-custom {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline-dark-custom:hover {
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+
+    .hero-line {
+      position: absolute;
+      right: 10vw;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--border);
+      writing-mode: vertical-rl;
+      display: none;
+    }
+    @media (min-width: 900px) { .hero-line { display: block; } .hero { position: relative; } }
+
+    /* ── SECTION WRAPPER ── */
+    section {
+      padding: 6rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      line-height: 1.15;
+    }
+
+    .max-w {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .about-avatar {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--accent-light);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+    }
+
+    .about-text p {
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid var(--border);
+      color: var(--mid);
+      background: white;
+    }
+
+    /* ── HOW I WORK ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      border: 1px solid var(--border);
+    }
+    @media (max-width: 700px) { .work-grid { grid-template-columns: 1fr; } }
+
+    .work-card {
+      padding: 2.2rem 1.8rem;
+      background: white;
+      border-right: 1px solid var(--border);
+    }
+    .work-card:last-child { border-right: none; }
+
+    .work-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--accent-light);
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .work-card h4 {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      color: var(--charcoal);
+    }
+
+    .work-card p {
+      font-size: 0.88rem;
+      color: var(--mid);
+    }
+
+    .work-note {
+      margin-top: 2.5rem;
+      padding: 1.5rem 2rem;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+    }
+    .work-note p { font-size: 0.88rem; color: var(--mid); }
+    .work-note a { color: var(--accent); }
+
+    /* ── CASE STUDIES ── */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+    @media (max-width: 700px) { .case-grid { grid-template-columns: 1fr; } }
+
+    .case-card {
+      position: relative;
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--border);
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      text-decoration: none;
+    }
+    .case-card:hover { border-color: var(--accent); }
+    .case-card:hover .case-overlay { background: rgba(45,90,75,0.88); }
+    .case-card:hover .case-soon { opacity: 1; transform: translateY(0); }
+
+    .case-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-bg-icon {
+      font-size: 4rem;
+      opacity: 0.07;
+    }
+
+    .case-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(28,28,28,0.55);
+      transition: background 0.3s;
+    }
+
+    .case-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem;
+    }
+
+    .case-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.3rem;
+    }
+
+    .case-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .case-soon {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-top: 0.4rem;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    /* Case bg colors */
+    .case-card:nth-child(1) .case-bg { background: #d6e4df; }
+    .case-card:nth-child(2) .case-bg { background: #dde0e8; }
+    .case-card:nth-child(3) .case-bg { background: #e8dfd6; }
+    .case-card:nth-child(4) .case-bg { background: #dde8e3; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-course {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--border);
+    }
+
+    /* ── FADE IN ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Portfolio</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Process</a>
+      <a href="#designs">Designs</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner fade-up">
+      <p class="hero-tag">UI/UX Design Student · uOttawa · SEG3125</p>
+      <h1>Designing with <em>intention</em> and clarity.</h1>
+      <p class="hero-desc">
+        A portfolio documenting my journey through interface design —
+        from first principles of visual communication to full interactive prototypes.
+      </p>
+      <a href="#designs" class="btn-outline-dark-custom">View Designs</a>
+    </div>
+    <span class="hero-line">SEG3125 · Summer 2026</span>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="max-w">
+      <p class="section-label fade-up">01 — About</p>
+      <h2 class="section-title fade-up">Who I am.</h2>
+      <div class="about-grid">
+        <div class="about-avatar fade-up">[ Photo ]</div>
+        <div class="about-text fade-up">
+          <p>
+            I'm a software engineering student at the University of Ottawa with a growing
+            interest in the intersection of technology and human experience. I believe good
+            design is invisible — it simply works, feels right, and gets out of the way.
+          </p>
+          <p>
+            Outside of coursework I enjoy exploring visual art, typography, and anything that
+            challenges how we perceive and interact with information.
+          </p>
+          <p>
+            This portfolio is a living document. It grows each semester as I develop new skills
+            and take on increasingly complex design challenges.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Visual Design</span>
+            <span class="tag">HTML · CSS</span>
+            <span class="tag">Bootstrap 5</span>
+            <span class="tag">UX Principles</span>
+            <span class="tag">Prototyping</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section id="work">
+    <div class="max-w">
+      <p class="section-label fade-up">02 — Process</p>
+      <h2 class="section-title fade-up">How I work.</h2>
+      <div class="work-grid fade-up">
+        <div class="work-card">
+          <div class="work-num">01</div>
+          <h4>Understand</h4>
+          <p>I start by identifying who the user is and what problem needs solving — before touching any tool.</p>
+        </div>
+        <div class="work-card">
+          <div class="work-num">02</div>
+          <h4>Explore</h4>
+          <p>Sketching, referencing visual communication principles (scale, hierarchy, contrast, balance), and iterating on structure.</p>
+        </div>
+        <div class="work-card">
+          <div class="work-num">03</div>
+          <h4>Build &amp; Refine</h4>
+          <p>Translating ideas into HTML/CSS/Bootstrap, then testing, adjusting, and validating the result.</p>
+        </div>
+      </div>
+      <div class="work-note fade-up">
+        <p>
+          I'm currently enrolled in <strong>SEG3125 – Analysis and Design of User Interfaces</strong> at the
+          University of Ottawa, learning user-centered design, heuristic evaluation, and interface prototyping.
+          Key references include the
+          <a href="https://www.nngroup.com/" target="_blank">Nielsen Norman Group</a> and
+          <a href="https://www.interaction-design.org/" target="_blank">Interaction Design Foundation</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="designs">
+    <div class="max-w">
+      <p class="section-label fade-up">03 — Designs</p>
+      <h2 class="section-title fade-up">Case studies.</h2>
+      <div class="case-grid fade-up">
+
+        <a href="coming-soon.html" class="case-card">
+          <div class="case-bg">
+            <span class="case-bg-icon">🪥</span>
+          </div>
+          <div class="case-overlay"></div>
+          <div class="case-content">
+            <p class="case-num">Design 01</p>
+            <p class="case-title">Service Site</p>
+            <p class="case-soon">Coming soon →</p>
+          </div>
+        </a>
+
+        <a href="coming-soon.html" class="case-card">
+          <div class="case-bg">
+            <span class="case-bg-icon">🃏</span>
+          </div>
+          <div class="case-overlay"></div>
+          <div class="case-content">
+            <p class="case-num">Design 02</p>
+            <p class="case-title">Jeu de Mémoire</p>
+            <p class="case-soon">Coming soon →</p>
+          </div>
+        </a>
+
+        <a href="coming-soon.html" class="case-card">
+          <div class="case-bg">
+            <span class="case-bg-icon">🛍️</span>
+          </div>
+          <div class="case-overlay"></div>
+          <div class="case-content">
+            <p class="case-num">Design 03</p>
+            <p class="case-title">E-Commerce Site</p>
+            <p class="case-soon">Coming soon →</p>
+          </div>
+        </a>
+
+        <a href="coming-soon.html" class="case-card">
+          <div class="case-bg">
+            <span class="case-bg-icon">📊</span>
+          </div>
+          <div class="case-overlay"></div>
+          <div class="case-content">
+            <p class="case-num">Design 04</p>
+            <p class="case-title">Analytics Dashboard</p>
+            <p class="case-soon">Coming soon →</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 · UX Portfolio</p>
+    <p class="footer-course">SEG3125 · University of Ottawa · Summer 2026</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Fade-in on scroll -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
