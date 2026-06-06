@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IcEdge Hockey — Equipment & Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ice: #e8f4f8;
+      --navy: #0d1b2a;
+      --navy2: #1a2e45;
+      --red: #c8102e;
+      --red-dark: #9e0c24;
+      --steel: #8fa8bc;
+      --steel-light: #c4d6e2;
+      --white: #ffffff;
+      --offwhite: #f4f7f9;
+      --mid: #5a7080;
+      --border: #d0dde5;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--offwhite);
+      color: var(--navy);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2.5rem;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-book-btn {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-book-btn:hover { background: var(--red-dark) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #1e3a55 100%);
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px);
+    }
+    .hero-inner {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .hero-inner { grid-template-columns: 1fr; } }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(200,16,46,0.15);
+      border: 1px solid rgba(200,16,46,0.35);
+      color: #f87a8c;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title em { color: var(--red); font-style: normal; }
+    .hero-sub {
+      color: var(--steel);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--steel-light);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border: 1px solid rgba(143,168,188,0.4);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--steel-light); color: var(--white); }
+
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .hero-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+    }
+    .hero-stat .num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat .lbl {
+      font-size: 0.72rem;
+      color: var(--steel);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-card-icon { font-size: 2rem; }
+    .hero-card-text .title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    .hero-card-text .sub { font-size: 0.82rem; color: var(--steel); margin-top: 0.15rem; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 5rem 2.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--navy);
+      margin-bottom: 2.5rem;
+      line-height: 1.05;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
+
+    .service-card {
+      background: var(--white);
+      padding: 2.2rem 2rem;
+      transition: background 0.2s;
+    }
+    .service-card:hover { background: var(--offwhite); }
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .service-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .service-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+    .service-price {
+      margin-top: 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--red);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── BOOK ── */
+    #book { background: var(--navy); }
+    #book .section-title { color: var(--white); }
+    #book .section-label { color: #f87a8c; }
+
+    .book-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .book-layout { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .book-info p { color: var(--steel); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .contact-list { list-style: none; }
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      color: var(--steel-light);
+      font-size: 0.9rem;
+    }
+    .contact-list li:last-child { border-bottom: none; }
+    .contact-list .ci { font-size: 1.1rem; flex-shrink: 0; }
+    .contact-list strong { color: var(--white); display: block; font-weight: 500; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.1rem; }
+
+    /* BOOKING FORM */
+    .book-form {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+    .book-form h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 2px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.92rem;
+      color: var(--navy);
+      background: var(--offwhite);
+      transition: border-color 0.2s;
+      outline: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--red); background: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+    @media (max-width: 520px) { .time-slots { grid-template-columns: repeat(3, 1fr); } }
+    .slot {
+      padding: 0.5rem 0.2rem;
+      border: 1.5px solid var(--border);
+      border-radius: 2px;
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--mid);
+      cursor: pointer;
+      transition: all 0.15s;
+      background: var(--offwhite);
+      user-select: none;
+    }
+    .slot:hover { border-color: var(--red); color: var(--red); }
+    .slot.selected { background: var(--red); border-color: var(--red); color: var(--white); }
+    .slot.unavailable { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+    .slot.unavailable:hover { border-color: var(--border); color: var(--mid); }
+
+    /* ── CONFIRMATION ── */
+    .confirmation {
+      display: none;
+      background: #e8f5ee;
+      border: 1.5px solid #6cbf8d;
+      border-radius: 4px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .confirmation.show { display: block; }
+    .confirmation .check { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .confirmation h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: #1a6b3a;
+      margin-bottom: 0.5rem;
+    }
+    .confirmation p { color: #2d6e4e; font-size: 0.9rem; }
+    .confirmation .booking-ref {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      background: rgba(107,191,141,0.2);
+      border-radius: 2px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: #1a6b3a;
+      display: inline-block;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--offwhite); }
+    .about-grid {
+      display: grid;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-text p { color: var(--mid); margin-bottom: 1rem; font-size: 0.95rem; }
+    .hours-table { width: 100%; margin-top: 1.5rem; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 0.6rem 0; font-size: 0.88rem; color: var(--mid); }
+    .hours-table td:first-child { font-weight: 500; color: var(--navy); }
+    .hours-table td:last-child { text-align: right; }
+    .today-row td { color: var(--red) !important; font-weight: 600 !important; }
+
+    .about-panel {
+      background: var(--navy);
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+    .about-panel h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .badge {
+      background: rgba(200,16,46,0.15);
+      border: 1px solid rgba(200,16,46,0.3);
+      color: #f87a8c;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+    }
+    .about-panel p { color: var(--steel); font-size: 0.88rem; line-height: 1.7; }
+    .designer-credit {
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem;
+      color: rgba(143,168,188,0.6);
+    }
+    .designer-credit strong { color: var(--steel-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer p { font-size: 0.78rem; color: var(--steel); letter-spacing: 0.06em; }
+    footer a { color: var(--steel-light); text-decoration: none; font-size: 0.78rem; }
+    footer a:hover { color: var(--white); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Ice<span>Edge</span> Hockey</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">Hours & Info</a>
+    <a href="#book" class="nav-book-btn">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1 class="hero-title">Gear Up.<br><em>Play Hard.</em></h1>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-icon">⚡</div>
+        <div class="hero-card-text">
+          <div class="title">Same-Day Sharpening</div>
+          <div class="sub">Drop off by noon — pick up same evening</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🛡️</div>
+        <div class="hero-card-text">
+          <div class="title">Expert Equipment Fitting</div>
+          <div class="sub">Certified fitters for skates, helmets & pads</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🔧</div>
+        <div class="hero-card-text">
+          <div class="title">Stick & Gear Repair</div>
+          <div class="sub">Most repairs ready within 24–48 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label reveal">What We Do</p>
+    <h2 class="section-title reveal">Our Services</h2>
+    <div class="services-grid reveal">
+
+      <div class="service-card">
+        <span class="service-icon">⛸️</span>
+        <h3>Skate Sharpening</h3>
+        <p>Precision hollow grinding using our Blademaster ProSharp machine. We'll match your preferred hollow and skating style.</p>
+        <div class="service-price">From $8</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🥅</span>
+        <h3>Skate Baking & Fitting</h3>
+        <p>Heat-mold your new skates for a perfect anatomical fit. Reduces break-in time and maximizes performance.</p>
+        <div class="service-price">From $25</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🏒</span>
+        <h3>Stick Repair & Taping</h3>
+        <p>Blade replacement, shaft repair, custom taping patterns. Extend the life of your favourite stick.</p>
+        <div class="service-price">From $15</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🧲</span>
+        <h3>Helmet Fitting & Certs</h3>
+        <p>CSA-certified helmet assessment. We check fit, certification stickers, and padding condition for all levels of play.</p>
+        <div class="service-price">From $20</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">🔩</span>
+        <h3>Skate Rivet & Eyelet Repair</h3>
+        <p>Loose blades and blown eyelets repaired on-site. Walk in, usually done while you wait.</p>
+        <div class="service-price">From $10</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-icon">👕</span>
+        <h3>Jersey Customization</h3>
+        <p>Name and number application using heat-press or sewn letters. Regulation leagues accepted.</p>
+        <div class="service-price">From $30</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BOOK APPOINTMENT -->
+<section id="book">
+  <div class="section-inner">
+    <p class="section-label reveal">Schedule Online</p>
+    <h2 class="section-title reveal" style="color:var(--white)">Book a Service</h2>
+    <div class="book-layout">
+
+      <!-- LEFT: Info -->
+      <div class="book-info reveal">
+        <p>Choose a service, pick your preferred date and time slot, and we'll confirm your appointment by email. Walk-ins are also welcome for sharpening.</p>
+        <ul class="contact-list">
+          <li>
+            <span class="ci">📍</span>
+            <div><strong>Address</strong>111 Bank Street, Ottawa</div>
+          </li>
+          <li>
+            <span class="ci">📞</span>
+            <div><strong>Phone</strong>(905) 111-1111</div>
+          </li>
+          <li>
+            <span class="ci">📧</span>
+            <div><strong>Email</strong>bookings@iceedgehockey.ca</div>
+          </li>
+          <li>
+            <span class="ci">🕐</span>
+            <div><strong>Walk-ins Welcome</strong>No appointment needed for skate sharpening</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="reveal">
+        <div class="book-form" id="bookingForm">
+          <h3>Request an Appointment</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" id="fname" placeholder="e.g. Mark">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" id="lname" placeholder="e.g. Morley">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="mark@example.com">
+          </div>
+
+          <div class="form-group">
+            <label>Service Needed</label>
+            <select id="service">
+              <option value="">— Select a service —</option>
+              <option value="Skate Sharpening ($8+)">Skate Sharpening ($8+)</option>
+              <option value="Skate Baking & Fitting ($25+)">Skate Baking & Fitting ($25+)</option>
+              <option value="Stick Repair & Taping ($15+)">Stick Repair & Taping ($15+)</option>
+              <option value="Helmet Fitting & Certification ($20+)">Helmet Fitting & Certification ($20+)</option>
+              <option value="Skate Rivet & Eyelet Repair ($10+)">Skate Rivet & Eyelet Repair ($10+)</option>
+              <option value="Jersey Customization ($30+)">Jersey Customization ($30+)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="date" id="apptDate">
+          </div>
+
+          <div class="form-group">
+            <label>Available Time Slots</label>
+            <div class="time-slots" id="timeSlots">
+              <div class="slot" data-time="9:00 AM">9:00 AM</div>
+              <div class="slot" data-time="10:00 AM">10:00 AM</div>
+              <div class="slot unavailable" data-time="11:00 AM">11:00 AM</div>
+              <div class="slot" data-time="12:00 PM">12:00 PM</div>
+              <div class="slot" data-time="1:00 PM">1:00 PM</div>
+              <div class="slot unavailable" data-time="2:00 PM">2:00 PM</div>
+              <div class="slot" data-time="3:00 PM">3:00 PM</div>
+              <div class="slot" data-time="4:00 PM">4:00 PM</div>
+              <div class="slot unavailable" data-time="5:00 PM">5:00 PM</div>
+              <div class="slot" data-time="6:00 PM">6:00 PM</div>
+              <div class="slot" data-time="7:00 PM">7:00 PM</div>
+              <div class="slot" data-time="7:30 PM">7:30 PM</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Additional Notes (optional)</label>
+            <textarea id="notes" placeholder="e.g. Player level, preferred hollow radius, skate brand…"></textarea>
+          </div>
+
+          <button class="btn-primary" style="width:100%;justify-content:center;" onclick="submitBooking()">Confirm Appointment</button>
+          <p id="formError" style="color:var(--red);font-size:0.82rem;margin-top:0.8rem;display:none;"></p>
+        </div>
+
+        <!-- Confirmation -->
+        <div class="confirmation" id="confirmationBox">
+          <div class="check">✅</div>
+          <h3>Appointment Confirmed!</h3>
+          <p id="confirmMsg">We'll see you soon at IceEdge Hockey.</p>
+          <div class="booking-ref" id="bookingRef">REF #—</div>
+          <br><br>
+          <button class="btn-primary" onclick="resetForm()">Book Another</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / HOURS -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label reveal">Find Us</p>
+    <h2 class="section-title reveal">Hours & Info</h2>
+    <div class="about-grid">
+
+      <div class="about-text reveal">
+        <p>IceEdge Hockey is Ottawa's go-to specialty hockey shop for skate services, equipment fitting, and gear repair. Our staff are certified technicians and lifelong hockey players who understand what performance equipment means to you.</p>
+        <p>We service recreational, competitive, and elite players from youth to adult. Whether you need a quick sharpen before a game or a full equipment overhaul, we've got you covered.</p>
+
+        <table class="hours-table">
+          <tr><td>Monday</td><td>10:00 AM – 7:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>10:00 AM – 7:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>10:00 AM – 7:00 PM</td></tr>
+          <tr><td>Thursday</td><td>10:00 AM – 8:00 PM</td></tr>
+          <tr id="fridayRow"><td>Friday</td><td>10:00 AM – 8:00 PM</td></tr>
+          <tr><td>Saturday</td><td>9:00 AM – 6:00 PM</td></tr>
+          <tr><td>Sunday</td><td>10:00 AM – 5:00 PM</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 IceEdge Hockey, Ottawa, ON</p>
+  <a href="index.html">← Back to Portfolio</a>
+</footer>
+
+<script>
+  // ── Scroll reveal ──
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // ── Time slot selection ──
+  let selectedTime = null;
+  document.querySelectorAll('.slot:not(.unavailable)').forEach(slot => {
+    slot.addEventListener('click', () => {
+      document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+      slot.classList.add('selected');
+      selectedTime = slot.dataset.time;
+    });
+  });
+
+  // ── Set min date to today ──
+  const dateInput = document.getElementById('apptDate');
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  const dd = String(today.getDate()).padStart(2,'0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+  // ── Highlight today in hours table ──
+  const dayIdx = today.getDay(); // 0=Sun
+  const rows = document.querySelectorAll('.hours-table tr');
+  const map = {1:0,2:1,3:2,4:3,5:4,6:5,0:6};
+  if (map[dayIdx] !== undefined) rows[map[dayIdx]].classList.add('today-row');
+
+  // ── Submit ──
+  function submitBooking() {
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+    const date = document.getElementById('apptDate').value;
+    const errEl = document.getElementById('formError');
+
+    if (!fname || !lname) { showErr('Please enter your full name.'); return; }
+    if (!email || !email.includes('@')) { showErr('Please enter a valid email address.'); return; }
+    if (!service) { showErr('Please select a service.'); return; }
+    if (!date) { showErr('Please choose a preferred date.'); return; }
+    if (!selectedTime) { showErr('Please select a time slot.'); return; }
+
+    errEl.style.display = 'none';
+
+    const ref = 'ICE-' + Math.floor(10000 + Math.random() * 90000);
+    const d = new Date(date + 'T12:00:00');
+    const dateStr = d.toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+    document.getElementById('confirmMsg').innerHTML =
+      `Hi <strong>${fname}</strong>! Your <strong>${service}</strong> is booked for <strong>${dateStr}</strong> at <strong>${selectedTime}</strong>.<br>A confirmation will be sent to <strong>${email}</strong>.`;
+    document.getElementById('bookingRef').textContent = `Booking Reference: ${ref}`;
+
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('confirmationBox').classList.add('show');
+    document.getElementById('confirmationBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function showErr(msg) {
+    const e = document.getElementById('formError');
+    e.textContent = msg;
+    e.style.display = 'block';
+  }
+
+  function resetForm() {
+    document.getElementById('bookingForm').style.display = 'block';
+    document.getElementById('confirmationBox').classList.remove('show');
+    document.getElementById('fname').value = '';
+    document.getElementById('lname').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('service').value = '';
+    document.getElementById('apptDate').value = '';
+    document.getElementById('notes').value = '';
+    document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+    selectedTime = null;
+  }
+</script>
+</body>
+</html>

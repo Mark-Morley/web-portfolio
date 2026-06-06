@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio</title>
+  <title>Portfolio — Mark Morley</title>
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 
   <style>
-    /*Pallete */
+    /*Palette */
     :root {
       --cream: #f7f5f2;
       --charcoal: #1c1c1c;
@@ -22,7 +22,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -46,7 +45,6 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
@@ -55,7 +53,6 @@
       color: var(--charcoal);
       text-decoration: none;
     }
-
     .nav-links a {
       font-size: 0.78rem;
       letter-spacing: 0.12em;
@@ -66,22 +63,6 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); }
-
-    .btn-outline-dark-custom {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      border: 1px solid var(--charcoal);
-      color: var(--charcoal);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-outline-dark-custom:hover {
-      background: var(--charcoal);
-      color: var(--cream);
-    }
 
     /* SECTION WRAPPER */
     section {
@@ -105,42 +86,9 @@
       line-height: 1.15;
     }
 
-    .max-w {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    .prose p {
-      color: var(--mid);
-      font-size: 0.97rem;
-      max-width: 680px;
-      margin-bottom: 1.4rem;
-    }
-    .prose a { color: var(--accent); }
+    .max-w { max-width: 100%; margin: 0 auto; }
 
     /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
-
-    .about-avatar {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: var(--accent-light);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      color: var(--mid);
-      letter-spacing: 0.1em;
-    }
-
     .about-text p {
       color: var(--mid);
       margin-bottom: 1.2rem;
@@ -171,7 +119,6 @@
       line-height: 1;
       margin-bottom: 0.8rem;
     }
-
     .work-card h4 {
       font-size: 0.8rem;
       letter-spacing: 0.12em;
@@ -179,20 +126,7 @@
       margin-bottom: 0.6rem;
       color: var(--charcoal);
     }
-
-    .work-card p {
-      font-size: 0.88rem;
-      color: var(--mid);
-    }
-
-    .work-note {
-      margin-top: 2.5rem;
-      padding: 1.5rem 2rem;
-      background: var(--accent-light);
-      border-left: 3px solid var(--accent);
-    }
-    .work-note p { font-size: 0.88rem; color: var(--mid); }
-    .work-note a { color: var(--accent); }
+    .work-card p { font-size: 0.88rem; color: var(--mid); }
 
     /* CASE STUDIES */
     .case-grid {
@@ -217,20 +151,13 @@
     }
     .case-card:hover { border-color: var(--accent); }
     .case-card:hover .case-overlay { background: rgba(45,90,75,0.88); }
-    .case-card:hover .case-soon { opacity: 1; transform: translateY(0); }
+    .case-card:hover .case-reveal { opacity: 1; transform: translateY(0); }
 
     .case-bg {
       position: absolute;
       inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-
-    .case-bg-icon {
-      font-size: 4rem;
-      opacity: 0.07;
-    }
+    .case-bg img { width: 100%; height: 100%; object-fit: cover; }
 
     .case-overlay {
       position: absolute;
@@ -239,18 +166,32 @@
       transition: background 0.3s;
     }
 
+    /* Stronger overlay for the live card so text is always readable */
+    .case-card.live .case-overlay { background: rgba(13,27,42,0.65); }
+    .case-card.live:hover .case-overlay { background: rgba(45,90,75,0.88); }
+
     .case-content {
       position: relative;
       z-index: 2;
       padding: 1.5rem;
     }
 
-    .case-num {
-      font-size: 0.68rem;
+    .case-tag {
+      display: inline-block;
+      font-size: 0.62rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 0.3rem;
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+      margin-bottom: 0.4rem;
+    }
+    .case-card.live .case-tag {
+      background: rgba(200,16,46,0.25);
+      border-color: rgba(200,16,46,0.4);
+      color: #fba3ae;
     }
 
     .case-title {
@@ -261,7 +202,7 @@
       line-height: 1.2;
     }
 
-    .case-soon {
+    .case-reveal {
       font-size: 0.68rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -272,12 +213,6 @@
       transition: opacity 0.2s, transform 0.2s;
     }
 
-    /* Case bg colors */
-    .case-card:nth-child(1) .case-bg { background: #d6e4df; }
-    .case-card:nth-child(2) .case-bg { background: #dde0e8; }
-    .case-card:nth-child(3) .case-bg { background: #e8dfd6; }
-    .case-card:nth-child(4) .case-bg { background: #dde8e3; }
-
     /* Footer */
     footer {
       padding: 3rem 2.5rem;
@@ -287,12 +222,7 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-
-    footer p {
-      font-size: 0.78rem;
-      color: var(--mid);
-      letter-spacing: 0.06em;
-    }
+    footer p { font-size: 0.78rem; color: var(--mid); letter-spacing: 0.06em; }
 
     /* FADE IN */
     .fade-up {
@@ -300,15 +230,12 @@
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <!-- NAV Bar-->
+  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">Portfolio</a>
     <div class="nav-links">
@@ -317,32 +244,27 @@
     </div>
   </nav>
 
-
-  
-
-  <!-- ABOUT & PROCESS -->
-  <section id="about">
+  <!-- ABOUT -->
+  <section id="about" style="padding-top: 8rem;">
     <div class="max-w">
       <p class="section-label fade-up">01 — About &amp; Process</p>
       <h2 class="section-title fade-up">Mark Morley.</h2>
-      <div class="prose fade-up">
-
+      <div class="about-text fade-up">
         <p>
-          I'm a Computer Science student at the University of Ottawa. 
-          I am passionate about technology, programming, 
-          and I enjoy learning new technologies, building personal projects, 
+          I'm a Computer Science student at the University of Ottawa.
+          I am passionate about technology, programming,
+          and I enjoy learning new technologies, building personal projects,
           and expanding my knowledge of software development.
         </p>
         <p>
-          Before starting this course, I worked at <strong>Nokia</strong> for an intership
-          building internal applications using <strong>C# and Blazor</strong> applications — which gave me a
+          Before starting this course, I worked at <strong>Nokia</strong> for an internship
+          building internal applications using <strong>C# and Blazor</strong> — which gave me a
           solid foundation in component-based thinking, collaborating with other team members to ship product to users.
         </p>
-
         <p>
-           When working on a project, I like to start by understanding the goal and planning the structure before writing any code.
-           I research ideas, look at examples for inspiration, organize the content, and work with clients and team members 
-           to ensure a clear structure before devlopement. 
+          When working on a project, I like to start by understanding the goal and planning the structure before writing any code.
+          I research ideas, look at examples for inspiration, organize the content, and work with clients and team members
+          to ensure a clear structure before development.
         </p>
       </div>
     </div>
@@ -355,43 +277,51 @@
       <h2 class="section-title fade-up">Case studies.</h2>
       <div class="case-grid fade-up">
 
-        <a href="coming-soon.html" class="case-card">
+        <!-- LIVE: IceEdge Hockey -->
+        <a href="service-site.html" class="case-card live">
           <div class="case-bg">
-            <img src= "https://images.unsplash.com/photo-1562615202-0b3035d14b6f?q=80&w=2519&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="service site" style="width:100%;height:100%;">
+            <img src="https://images.unsplash.com/photo-1562615202-0b3035d14b6f?q=80&w=2519&auto=format&fit=crop" alt="Hockey shop service site"/>
           </div>
           <div class="case-overlay"></div>
           <div class="case-content">
-            <p class="case-soon">Coming soon →</p>
+            <p class="case-title">IceEdge Hockey</p>
+            <p class="case-reveal">View service site →</p>
           </div>
         </a>
 
         <a href="coming-soon.html" class="case-card">
           <div class="case-bg">
-            <img src= "https://images.unsplash.com/photo-1769577608140-9f91760aef04?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Memory Game" style="width:100%;height:100%;">
+            <img src="https://images.unsplash.com/photo-1769577608140-9f91760aef04?q=80&w=2070&auto=format&fit=crop" alt="Coming soon"/>
           </div>
           <div class="case-overlay"></div>
           <div class="case-content">
-            <p class="case-soon">Coming soon →</p>
+            <div class="case-tag">Coming soon</div>
+            <p class="case-title">Project Two</p>
+            <p class="case-reveal">Coming soon →</p>
           </div>
         </a>
 
         <a href="coming-soon.html" class="case-card">
           <div class="case-bg">
-            <img src= "https://images.unsplash.com/photo-1664455340023-214c33a9d0bd?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="e-commerce site" style="width:100%;height:100%;">
+            <img src="https://images.unsplash.com/photo-1664455340023-214c33a9d0bd?q=80&w=3132&auto=format&fit=crop" alt="Coming soon"/>
           </div>
           <div class="case-overlay"></div>
           <div class="case-content">
-            <p class="case-soon">Coming soon →</p>
+            <div class="case-tag">Coming soon</div>
+            <p class="case-title">Project Three</p>
+            <p class="case-reveal">Coming soon →</p>
           </div>
         </a>
 
         <a href="coming-soon.html" class="case-card">
           <div class="case-bg">
-            <img src= "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="analytic site" style="width:100%;height:100%;">
+            <img src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=2070&auto=format&fit=crop" alt="Coming soon"/>
           </div>
           <div class="case-overlay"></div>
           <div class="case-content">
-            <p class="case-soon">Coming soon →</p>
+            <div class="case-tag">Coming soon</div>
+            <p class="case-title">Project Four</p>
+            <p class="case-reveal">Coming soon →</p>
           </div>
         </a>
 
@@ -401,13 +331,12 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>Portfolio</p>
+    <p>Portfolio — Mark Morley</p>
   </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Fade-in on scroll -->
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -417,9 +346,7 @@
         }
       });
     }, { threshold: 0.12 });
-
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
